@@ -9,7 +9,7 @@ namespace Lab1.Domain.Core
     abstract class SellableItemBase 
     {
         public string Name { get; }
-        public decimal BasePrice { get; set; }
+        public decimal BasePrice { get; set; } = 600;
         public SellableItemBase (string name, decimal basePrice)
         {
             Name = name;

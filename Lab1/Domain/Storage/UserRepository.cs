@@ -10,9 +10,10 @@ namespace Lab1.Domain.Storage
     class UserRepository
     {
         User[] users = new User[50];
+        public UserRepository() { }
 
         private int _count = 0;
-        
+
         public bool AddUser(User user)
         {
             if (users.Contains(user) || _count == 50)
@@ -23,6 +24,20 @@ namespace Lab1.Domain.Storage
             _count++;
             return true;
         }
+
+
+        public User GetUserById(string id)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (id.Equals(users[i].Id))
+                {
+                    return users[i];
+                }
+            }
+            return null;
+        }
+
 
         public void PrintAll()
         {

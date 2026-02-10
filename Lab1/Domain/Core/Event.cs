@@ -19,5 +19,9 @@ namespace Lab1.Domain.Core
             Name = name;
             DT = dT;
         }
+        public override string ToString()
+        {
+            return $"Id: {Id}\r\nName: {Name}\r\nStatus: {Status}\r\nScheduled: {DT}\r\n";
+        }
     }
 }

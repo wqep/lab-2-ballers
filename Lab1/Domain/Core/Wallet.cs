@@ -18,5 +18,18 @@ namespace Lab1.Domain.Core
             uSer = user;
             Balance = balance;
         }
+
+        public override string ToString()
+        {
+            return $"Wallet Id: {Id}\r\n owner: {uSer.Name}, {uSer.Id}\r\n balance: {Balance}";
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj is not Wallet || obj == null)
+            {
+                return false;
+            }
+            return Id.Equals(((Wallet)obj).Id);
+        }
     }
 }

@@ -22,6 +22,17 @@ namespace Lab1.Domain.Storage
             _count++;
             return true;
         }
+        public Event GetEventById(string id)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (id == events[i].Id)
+                {
+                    return events[i];
+                }
+            }
+            return null;
+        }
 
         public void PrintAll()
         {
