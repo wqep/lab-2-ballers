@@ -13,6 +13,11 @@ namespace Lab1.Domain.Core
         public string Name { get; }
         public string Status { get; set; } = "Planned";
         public DateTime DT { get; }
+        
+        public Event (string id)
+        {
+            Id = id;
+        }
         public Event (string id, string name, DateTime dT)
         {
             Id = id;

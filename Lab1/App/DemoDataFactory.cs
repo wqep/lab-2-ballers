@@ -11,9 +11,10 @@ namespace Lab1.App
     {
         public DemoDataFactory() { }
 
-        public void UserFactory(int number)
+        public User UserFactory(int number)
         {
             User user = new User("user" + number, "Max" + number);
+            return user;
         }
 
         public void WalletFactory(int number, User user)
@@ -24,7 +25,7 @@ namespace Lab1.App
 
         public void EventFactory(int number)
         {
-            Event @event = new Event("event" + number, )
+            Event @event = new Event("event");
         }
     }
 }
