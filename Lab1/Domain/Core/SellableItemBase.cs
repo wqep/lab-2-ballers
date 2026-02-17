@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab1.Domain.Core
+﻿namespace Lab1.Domain.Core
 {
     abstract class SellableItemBase 
     {
@@ -15,10 +9,5 @@ namespace Lab1.Domain.Core
             Name = name;
             BasePrice = basePrice;
         }
-        public SellableItemBase (string name)
-        {
-            Name = name;
-        }
-
     }
 }

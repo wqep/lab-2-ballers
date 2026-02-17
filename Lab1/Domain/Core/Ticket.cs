@@ -34,6 +34,7 @@ namespace Lab1.Domain.Core
         {
             return HashCode.Combine(Id, Owner, Price);
         }
+
         public string PrintCheck()
         {
             return $"Id: {Id} Event: {eVent.Name} Price: {BasePrice} Buyer: {Owner.Name}";

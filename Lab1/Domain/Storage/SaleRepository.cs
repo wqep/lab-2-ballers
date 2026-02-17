@@ -1,10 +1,4 @@
 ﻿using Lab1.Domain.Core;
-using Lab1.Domain.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab1.Domain.Storage
 {
@@ -35,7 +29,7 @@ namespace Lab1.Domain.Storage
             {
                 ticket.Price *= (decimal)0.8;
             }
-            ticket.Owner = wallet.uSer;
+            ticket.Owner = wallet.User;
             tickets[_countT] = ticket;
             wallet.Balance -= ticket.Price;
             checks[_countC] = new Check("check" + _countC, ticket, "Purchasing");

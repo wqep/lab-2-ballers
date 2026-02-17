@@ -1,6 +1,5 @@
 ﻿using Lab1.Domain.Core;
 using Lab1.Domain.Storage;
-using System.Diagnostics.Tracing;
 
 namespace Lab1.App
 {
