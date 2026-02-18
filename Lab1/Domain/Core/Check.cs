@@ -2,7 +2,7 @@
 
 namespace Lab1.Domain.Core
 {
-    class Check: IIdenifiable
+    public class Check: IIdenifiable
     {
         public string Id { get; }
         public DateTime PaymentTime { get; } = DateTime.Now;

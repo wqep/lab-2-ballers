@@ -9,7 +9,8 @@ namespace Lab1.App
         {
             UserRepository userRepository = new UserRepository();
             WalletRepository walletRepository = new WalletRepository();
-            SaleRepository saleRepository = new SaleRepository();
+            CheckRepository checkRepository = new CheckRepository();
+            TicketRepository ticketRepository = new TicketRepository();
             EventRepository eventRepository = new EventRepository();
             DemoDataFactory demoDataFactory = new DemoDataFactory();
 
@@ -134,12 +135,13 @@ namespace Lab1.App
                                             int boughtSuccessful = 0;
                                             for (int i = 0; i < amount; i++)
                                             {
-                                                int count = saleRepository.GetCount();
+                                                int count = checkRepository.GetCount();
                                                 Ticket ticket = new Ticket("ticket" + count, @event, user, "none", 600);
-                                                bool addedSuccessfully = saleRepository.AddTicket(ticket, user.Wallet);
+                                                bool addedSuccessfully = ticketRepository.AddTicket(ticket, user.Wallet);
                                                 if (addedSuccessfully)
                                                 {
                                                     boughtSuccessful++;
+                                                    checkRepository.UpdateList(ticket);
                                                 }
                                                 else
                                                 {
@@ -181,10 +183,10 @@ namespace Lab1.App
                         string ticketId = Console.ReadLine();
                         if (ticketId != null)
                         {
-                            Ticket ticket = saleRepository.GetTicketById(ticketId);
+                            Ticket ticket = ticketRepository.GetTicketById(ticketId);
                             if (ticket != null)
                             {
-                                bool soldSuccessfulyy = saleRepository.SellTicket(ticket, ticket.Owner.Wallet);
+                                bool soldSuccessfulyy = checkRepository.SellTicket(ticketRepository.tickets, ticket, ticket.Owner.Wallet, ticketRepository._count);
                                 if (soldSuccessfulyy)
                                 {
                                     Console.WriteLine("Sold successfully");
@@ -210,17 +212,17 @@ namespace Lab1.App
                         string inputId = Console.ReadLine();
                         if (inputId != null)
                         {
-                            Check check = saleRepository.GetCheckById(inputId);
+                            Check check = checkRepository.GetCheckById(inputId);
                             if (check == null)
                             {
-                                Ticket ticket = saleRepository.GetTicketById(inputId);
+                                Ticket ticket = ticketRepository.GetTicketById(inputId);
                                 if (ticket == null)
                                 {
                                     Console.WriteLine("Invalid id.");
                                 }
                                 else
                                 {
-                                    saleRepository.PrintCheck(ticket);
+                                    checkRepository.PrintCheck(ticket);
                                 }
                             }
                             else
@@ -243,7 +245,7 @@ namespace Lab1.App
                             Event @event = eventRepository.GetEventById(inputEventId);
                             if (@event != null)
                             {
-                                saleRepository.EventSummary(@event);
+                                ticketRepository.EventSummary(@event);
                             }
                             else
                             {
@@ -259,7 +261,7 @@ namespace Lab1.App
                     {
                         eventRepository.ChangeStatus();
                         eventRepository.SummaryEvents();
-                        saleRepository.SaleSummary();
+                        checkRepository.SaleSummary();
                     }
                     else if (input == 11)
                     {
@@ -310,7 +312,7 @@ namespace Lab1.App
                             }
                             else
                             {
-                                saleRepository.PrintTicketsForUser(user);
+                                ticketRepository.PrintTicketsForUser(user);
                             }
                         }
                     }

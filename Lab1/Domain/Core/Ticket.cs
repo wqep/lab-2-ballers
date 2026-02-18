@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab1.Domain.Core
 {
-    class Ticket : SellableItemBase, IIdenifiable, IReceiptLine
+    public class Ticket : SellableItemBase, IIdenifiable, IReceiptLine
     {
         public string Id { get; }
         public Event eVent { get; }

@@ -1,6 +1,6 @@
 ﻿namespace Lab1.Domain.Core
 {
-    abstract class SellableItemBase 
+    public abstract class SellableItemBase 
     {
         public string Name { get; }
         public decimal BasePrice { get; set; }
