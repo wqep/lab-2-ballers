@@ -1,37 +1,38 @@
 ﻿using Lab1.Domain.Core;
+<<<<<<< HEAD
+=======
+namespace Lab1.Domain.Storage;
+>>>>>>> d61e295 (Tests.)
 
-namespace Lab1.Domain.Storage
+public class WalletRepository
 {
-    class WalletRepository
+    protected Wallet[] wallets = new Wallet[50];
+    protected int _count = 0;
+
+    public int GetCount()
     {
-        Wallet[] wallets = new Wallet[50];
-        private int _count = 0;
+        return _count;
+    }
 
-        public int GetCount()
+    public bool AddWallet(Wallet wallet, User user)
+    {
+        if (_count == 50 || wallets.Contains(wallet))
         {
-            return _count;
+            return false;
         }
+        user.Wallet = wallet;
+        wallets[_count] = wallet;
 
-        public bool AddWallet(Wallet wallet, User user)
+        _count++;
+        return true;
+    }
+    public bool IncreaseBalance(Wallet wallet, decimal balance)
+    {
+        if (balance <= 0)
         {
-            if (_count == 50 || wallets.Contains(wallet))
-            {
-                return false;
-            }
-            user.Wallet = wallet;
-            wallets[_count] = wallet;
-
-            _count++;
-            return true;
+            return false;
         }
-        public bool IncreaseBalance(Wallet wallet, decimal balance)
-        {
-            if (balance <= 0)
-            {
-                return false;
-            }
-            wallet.Balance += balance;
-            return true;
-        }
+        wallet.Balance += balance;
+        return true;
     }
 }

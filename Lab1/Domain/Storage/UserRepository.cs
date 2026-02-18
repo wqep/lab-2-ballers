@@ -1,53 +1,54 @@
 ﻿using Lab1.Domain.Core;
+<<<<<<< HEAD
+=======
+namespace Lab1.Domain.Storage;
+>>>>>>> d61e295 (Tests.)
 
-namespace Lab1.Domain.Storage
+public class UserRepository
 {
-    class UserRepository
+    protected User[] users = new User[50];
+
+    protected int _count = 0;
+
+    public int GetCount()
     {
-        User[] users = new User[50];
+        return _count;
+    }
 
-        private int _count = 0;
-        
-        public int GetCount()
+    public bool AddUser(User user)
+    {
+        if (users.Contains(user) || _count == 50)
         {
-            return _count;
+            return false;
         }
+        users[_count] = user;
+        _count++;
+        return true;
+    }
 
-        public bool AddUser(User user)
+    public User GetUserById(string id)
+    {
+        for (int i = 0; i < _count; i++)
         {
-            if (users.Contains(user) || _count == 50)
+            if (id.Equals(users[i].Id))
             {
-                return false;
+                return users[i];
             }
-            users[_count] = user;
-            _count++;
-            return true;
         }
+        return null;
+    }
 
-        public User GetUserById(string id)
+    public void PrintAll()
+    {
+        if (_count == 0)
+        {
+            Console.WriteLine("Create some first.");
+        }
+        else
         {
             for (int i = 0; i < _count; i++)
             {
-                if (id.Equals(users[i].Id))
-                {
-                    return users[i];
-                }
-            }
-            return null;
-        }
-
-        public void PrintAll()
-        {
-            if (_count == 0)
-            {
-                Console.WriteLine("Create some first.");
-            }
-            else
-            {
-                for (int i = 0; i < _count; i++)
-                {
-                    Console.WriteLine(users[i].ToString());
-                }
+                Console.WriteLine(users[i].ToString());
             }
         }
     }

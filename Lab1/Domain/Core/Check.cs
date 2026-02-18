@@ -1,23 +1,24 @@
 ﻿using Lab1.Domain.Core.Interfaces;
+<<<<<<< HEAD
+=======
+namespace Lab1.Domain.Core;
+>>>>>>> d61e295 (Tests.)
 
-namespace Lab1.Domain.Core
+public class Check : IIdenifiable
 {
-    class Check: IIdenifiable
+    public string Id { get; }
+    public DateTime PaymentTime { get; } = DateTime.Now;
+    public Ticket Ticket { get; }
+    public string Status { get; }
+    public Wallet Wallet { get; }
+    public Check(string id, Ticket ticket, string status)
     {
-        public string Id { get; }
-        public DateTime PaymentTime { get; } = DateTime.Now;
-        public Ticket Ticket { get; }
-        public string Status { get; }
-        public Wallet Wallet { get; }
-        public Check(string id, Ticket ticket, string status)
-        {
-            Id = id;
-            Ticket = ticket;
-            Status = status;
-        }
-        public override string ToString()
-        {
-            return $"Id: {Id}, Operation time: {PaymentTime}, Status: {Status}";
-        }
+        Id = id;
+        Ticket = ticket;
+        Status = status;
+    }
+    public override string ToString()
+    {
+        return $"Id: {Id}, Operation time: {PaymentTime}, Status: {Status}";
     }
 }

@@ -1,88 +1,89 @@
 ﻿using Lab1.Domain.Core;
+<<<<<<< HEAD
+=======
+namespace Lab1.Domain.Storage;
+>>>>>>> d61e295 (Tests.)
 
-namespace Lab1.Domain.Storage
+public class EventRepository
 {
-    class EventRepository
+    protected Event[] events = new Event[50];
+    protected int _count;
+
+    public int GetCount()
     {
-        Event[] events = new Event[50];
-        private int _count;
+        return _count;
+    }
 
-        public int GetCount()
+    public bool AddEvent(Event evenT)
+    {
+        if (events.Contains(evenT) || _count == 50)
         {
-            return _count;
+            return false;
         }
-
-        public bool AddEvent(Event evenT)
+        events[_count] = evenT;
+        _count++;
+        return true;
+    }
+    public void ChangeStatus() // for automatic change of event status 
+    {
+        for (int i = 0; i < _count; i++)
         {
-            if (events.Contains(evenT) || _count == 50)
+            if (events[i].DT < DateTime.Now)
             {
-                return false;
+                events[i].Status = "Finished";
             }
-            events[_count] = evenT;
-            _count++;
-            return true;
-        }
-        public void ChangeStatus() // for automatic change of event status 
-        {
-            for (int i = 0; i < _count; i++)
+            else if (events[i].DT == DateTime.Now)
             {
-                if (events[i].DT < DateTime.Now)
-                {
-                    events[i].Status = "Finished";
-                }
-                else if(events[i].DT == DateTime.Now)
-                {
-                    events[i].Status = "Ongoing";
-                }
+                events[i].Status = "Ongoing";
             }
         }
-        public void SummaryEvents()
+    }
+    public void SummaryEvents()
+    {
+        int planned = 0;
+        int ongoing = 0;
+        int finished = 0;
+        for (int i = 0; i < _count; i++)
         {
-            int planned = 0;
-            int ongoing = 0;
-            int finished = 0;
-            for (int i = 0; i < _count; i++)
+            if (events[i].Status == "Finished")
             {
-                if (events[i].Status == "Finished")
-                {
-                    finished++;
-                }
-                else if (events[i].Status == "Ongoing")
-                {
-                    ongoing++;
-                }
-                else
-                {
-                    planned++;
-                }
+                finished++;
             }
-            Console.WriteLine($"Events:\r\nPlanned: {planned}, Ongoing: {ongoing}, Finished: {finished}");
-        }
-
-        public Event GetEventById(string id)
-        {
-            for (int i = 0; i < _count; i++)
+            else if (events[i].Status == "Ongoing")
             {
-                if (id == events[i].Id)
-                {
-                    return events[i];
-                }
-            }
-            return null;
-        }
-
-        public void PrintAll()
-        {
-            if (_count == 0)
-            {
-                Console.WriteLine("Create some first.");
+                ongoing++;
             }
             else
             {
-                for (int i = 0; i < _count; i++)
-                {
-                    Console.WriteLine(events[i].ToString());
-                }
+                planned++;
+            }
+        }
+        Console.WriteLine($"Events:\r\nPlanned: {planned}, Ongoing: {ongoing}, Finished: {finished}");
+    }
+
+    public Event GetEventById(string id)
+    {
+        for (int i = 0; i < _count; i++)
+        {
+            if (id == events[i].Id)
+            {
+                return events[i];
+            }
+        }
+        return null;
+    }
+
+    public void PrintAll()
+    {
+        if (_count == 0)
+        {
+            Console.WriteLine("Create some first.");
+        }
+        else
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                Console.WriteLine(events[i].ToString());
             }
         }
     }
