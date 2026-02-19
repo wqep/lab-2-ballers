@@ -19,7 +19,7 @@ Core - Солопов Данило (wqep).
 ## Як заупстити тести
 Iduno
 ## Як перевірити: List через enumerator, Sort default, Sort альтернативне, Stats
-**Логіка:**
+### Логіка:
 1) Логіка **IEnumerable** знаходиться в класі відповідної колекції (Наприклад: `Lab1/Domain/Core/Enumerators`)
 
 2) Логіка **IEnumerator** для всіх колекцій знаходиться у відповідній папці `Lab1/Domain/Core/Enumerators`.
@@ -28,19 +28,23 @@ Iduno
 
 4) Логіка **IComparable** знаходиться в відповідному класі об'єкту (Наприклад: `Lab1/Domain/Core/Enumerators`)
 
-**Виконання:**
+### Виконання:
 > Перед тим як виконувати будь яку з нижче перерахованих дій потрібно створити відповідні об'єкти за допомгою меню.
 
-**List через enumerator** - визивається через 13 пункт в меню:
-```
-13 - print with enumerator
-```
-**Sort default** - визивається через 14 пункт в меню:
-```
-14 - natural sort
-```
-**Sort альтернативне** - визивається через 15 пункт в меню:
-```
-15 - alternative sort
-```  
+**List через enumerator** - визивається через 13 пункт в меню:\
+`13 - print with enumerator`\
+\
+**Sort default** - визивається через 14 пункт в меню:\
+`14 - natural sort`\
+\
+**Sort альтернативне** - визивається через 15 пункт в меню:\
+`15 - alternative sort`
+
+### Сортування відбувається за наступними параметрами:
+1) Ceck - `Id`
+2) Event - `Name`
+3) Ticket - `Price`
+4) User - `Wallet.Balance`
+5) Wallet - `Balance`
+
 :shipit:
