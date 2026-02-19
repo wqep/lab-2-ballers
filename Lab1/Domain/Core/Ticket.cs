@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab1.Domain.Core
 {
-    class Ticket : SellableItemBase, IIdenifiable, IReceiptLine
+    public class Ticket : SellableItemBase, IIdenifiable, IReceiptLine, IComparable
     {
         public string Id { get; }
         public Event eVent { get; }
@@ -38,6 +38,21 @@ namespace Lab1.Domain.Core
         public string PrintCheck()
         {
             return $"Id: {Id} Event: {eVent.Name} Price: {BasePrice} Buyer: {Owner.Name}";
+        }
+
+        public override string ToString()
+        {
+            return $"Id: {Id} Event: {eVent.Name} Price: {BasePrice} Buyer: {Owner.Name}";
+        }
+
+        public int CompareTo(object? obj)
+        {
+            if (obj is not Ticket other)
+            {
+                throw new ArgumentException("Object must be type of Ticket");
+            }
+            
+            return Price.CompareTo(other.Price);
         }
     }
 }

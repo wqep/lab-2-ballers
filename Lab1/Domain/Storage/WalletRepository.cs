@@ -1,8 +1,11 @@
-﻿using Lab1.Domain.Core;
+﻿using System.Collections;
+using Lab1.Domain.Core;
+using Lab1.Domain.Core.Comparers;
+using Lab1.Domain.Core.Enumerators;
 
 namespace Lab1.Domain.Storage
 {
-    class WalletRepository
+    class WalletRepository : IEnumerable
     {
         Wallet[] wallets = new Wallet[50];
         private int _count = 0;
@@ -32,6 +35,21 @@ namespace Lab1.Domain.Storage
             }
             wallet.Balance += balance;
             return true;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new WalletEnumerator(wallets);
+        }
+        
+        public void NatSort()
+        {
+            Array.Sort(wallets, 0, _count);
+        }
+        
+        public void AltSort()
+        {
+            Array.Sort(wallets, 0, _count, new WalletComparer());
         }
     }
 }

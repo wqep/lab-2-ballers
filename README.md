@@ -1,9 +1,12 @@
+# Lab 2: ballers + 8-team
+```
 Учасники ballers:
   1) Рибаков Ігор
   2) Солопов Данило
 ```
 ```
 Учасники 8-team:
+  1)
   1) 
   2)
 ```
@@ -43,4 +46,7 @@ Iduno
 2) Event - `Name`
 3) Ticket - `Price`
 4) User - `Wallet.Balance`
+5) Wallet - `Balance`
+
+:shipit:
 5) Wallet - `Balance`

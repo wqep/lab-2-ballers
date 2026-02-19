@@ -2,7 +2,7 @@
 
 namespace Lab1.Domain.Core
 {
-    class Event : IIdenifiable
+    public class Event : IIdenifiable, IComparable
     {
         public string Id { get; }
         public string Name { get; }
@@ -17,6 +17,16 @@ namespace Lab1.Domain.Core
         public override string ToString()
         {
             return $"Id: {Id} Name: {Name} Status: {Status} Scheduled: {DT}\r\n";
+        }
+        
+        public int CompareTo(object? obj)
+        {
+            if (obj is not Event other)
+            {
+                throw new ArgumentException("Object must be type of Event");
+            }
+            
+            return string.Compare(Name, other.Name, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
