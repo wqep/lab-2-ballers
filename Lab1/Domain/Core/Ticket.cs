@@ -39,7 +39,12 @@ namespace Lab1.Domain.Core
         {
             return $"Id: {Id} Event: {eVent.Name} Price: {BasePrice} Buyer: {Owner.Name}";
         }
-        
+
+        public override string ToString()
+        {
+            return $"Id: {Id} Event: {eVent.Name} Price: {BasePrice} Buyer: {Owner.Name}";
+        }
+
         public int CompareTo(object? obj)
         {
             if (obj is not Ticket other)

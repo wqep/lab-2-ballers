@@ -6,9 +6,9 @@ public class UserComparer : IComparer
 {
     public int Compare(object x, object y)
     {
-        User c1 = x as User;
-        User c2 = y as User;
-
-        return string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase);
+        User c1 = (User)x;
+        User c2 = (User)y;
+        
+        return c1.Wallet.Balance.CompareTo(c2.Wallet.Balance);
     }
 }

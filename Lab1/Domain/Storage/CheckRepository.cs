@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Lab1.Domain.Core;
+using Lab1.Domain.Core.Comparers;
 using Lab1.Domain.Core.Enumerators;
 
 namespace Lab1.Domain.Storage
@@ -101,10 +102,15 @@ namespace Lab1.Domain.Storage
         {
             return new CheckEnumerator(checks);
         }
-
-        public void Sort()
+        
+        public void NatSort()
         {
-            Array.Sort(checks);
+            Array.Sort(checks, 0, _count);
+        }
+
+        public void AltSort()
+        {
+            Array.Sort(checks, 0, _count, new CheckComparer());
         }
     }
 }

@@ -10,17 +10,14 @@
     <list default="true" id="da68df66-ece9-4610-9260-0f16199afcee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lab1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lab1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/Menu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/App/Menu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Core/Check.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Core/Check.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Core/Event.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Core/Event.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Core/Comparers/UserComparer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Core/Comparers/UserComparer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Core/Comparers/WalletComparer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Core/Comparers/WalletComparer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Core/Ticket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Core/Ticket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Core/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Core/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Core/Wallet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Core/Wallet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Storage/CheckRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Storage/CheckRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Storage/EventRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Storage/EventRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Storage/TicketRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Storage/TicketRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Storage/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Storage/UserRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Storage/WalletRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Storage/WalletRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab1.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Lab1.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +58,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.Lab1.executor": "Debug",
+    ".NET Project.Lab1.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -109,6 +106,7 @@
       <updated>1771436041454</updated>
       <workItem from="1771436042551" duration="4290000" />
       <workItem from="1771440987285" duration="11219000" />
+      <workItem from="1771493957993" duration="5903000" />
     </task>
     <servers />
   </component>

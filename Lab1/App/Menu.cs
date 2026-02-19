@@ -17,7 +17,7 @@ namespace Lab1.App
             bool isTrue = true;
             while (isTrue)
             {
-                Console.WriteLine($"0 - exit\r" +
+                Console.Write($"0 - exit\r" +
                                   $"\n1 - add user\r" +
                                   $"\n2 - add wallet\r" +
                                   $"\n3 - add event\r" +
@@ -29,7 +29,11 @@ namespace Lab1.App
                                   $"\n9 - summary for event\r" +
                                   $"\n10 - final summary\r" +
                                   $"\n11 - add funds\r" +
-                                  $"\n12 - print tickets of user");
+                                  $"\n12 - print tickets of user" +
+                                  $"\n13 - print with enumerator" +
+                                  $"\n14 - natural sort" +
+                                  $"\n15 - alternative sort" +
+                                  $"\n\n-->Enter: ");
                 
                 string stringInput = Console.ReadLine();
                 bool isSuccess = int.TryParse(stringInput, out int input);
@@ -41,6 +45,7 @@ namespace Lab1.App
                         Console.WriteLine("You exited the program.");
                         break;
                     }
+                    
                     else if (input == 1)
                     {
                         Console.WriteLine("Input number of users: ");
@@ -65,6 +70,7 @@ namespace Lab1.App
                             Console.WriteLine("Invalid input.");
                         }
                     }
+                    
                     else if (input == 2)
                     {
                         Console.WriteLine("Input number of wallet: ");
@@ -96,6 +102,7 @@ namespace Lab1.App
                             Console.WriteLine("Invalid input.");
                         }
                     }
+                    
                     else if (input == 3)
                     {
                         Console.WriteLine("Input number of events: ");
@@ -116,6 +123,7 @@ namespace Lab1.App
                         eventCount = eventRepository.GetCount();
                         Console.WriteLine($"Created {numberOfEvents} event(s) successfully.");
                     }
+                    
                     else if (input == 4)
                     {
                         Console.WriteLine("Input user id: ");
@@ -149,7 +157,7 @@ namespace Lab1.App
                                             for (int i = 0; i < amount; i++)
                                             {
                                                 int count = checkRepository.GetCount();
-                                                Ticket ticket = new Ticket("ticket" + count, @event, user, "none", 600);
+                                                Ticket ticket = new Ticket("ticket" + count, @event, user, "none", 200);
                                                 bool addedSuccessfully = ticketRepository.AddTicket(ticket, user.Wallet);
                                                 if (addedSuccessfully)
                                                 {
@@ -181,15 +189,18 @@ namespace Lab1.App
                             Console.WriteLine("Invalid input.");
                         }
                     }
+                    
                     else if (input == 5)
                     {
                         userRepository.PrintAll();
                     }
+                    
                     else if (input == 6)
                     {
                         eventRepository.ChangeStatus();
                         eventRepository.PrintAll();
                     }
+                    
                     else if (input == 7)
                     {
                         Console.WriteLine("Input ticket id.");
@@ -219,6 +230,7 @@ namespace Lab1.App
                             Console.WriteLine("Invalid id.");
                         }
                     }
+                    
                     else if (input == 8)
                     {
                         Console.WriteLine("Input check or ticket id:");
@@ -248,6 +260,7 @@ namespace Lab1.App
                             Console.WriteLine("Invalid input.");
                         }
                     }
+                    
                     else if (input == 9)
                     {
                         eventRepository.ChangeStatus();
@@ -270,12 +283,14 @@ namespace Lab1.App
                             Console.WriteLine("Invalid input.");
                         }
                     }
+                    
                     else if (input == 10)
                     {
                         eventRepository.ChangeStatus();
                         eventRepository.SummaryEvents();
                         checkRepository.SaleSummary();
                     }
+                    
                     else if (input == 11)
                     {
                         Console.WriteLine("Input owner id:");
@@ -308,6 +323,7 @@ namespace Lab1.App
                             }  
                         }
                     }
+                    
                     else if (input == 12)
                     {
                         Console.WriteLine("Input user id:");
@@ -329,7 +345,51 @@ namespace Lab1.App
                             }
                         }
                     }
+                    
+                    //Перебор через Enumerators - Нове
                     else if (input == 13)
+                    {
+                        Console.Write("What to Print?" +
+                                      "\n1) Checks" +
+                                      "\n2) Events" +
+                                      "\n3) Tickets" +
+                                      "\n4) Users" +
+                                      "\n5) Wallet" +
+                                      "\n\n-->Enter: ");
+                        
+                        input = int.Parse(Console.ReadLine());
+
+                        var it = checkRepository.GetEnumerator();
+                        
+                        if (input == 1)
+                        {
+                            it = checkRepository.GetEnumerator();
+                        }
+                        else if (input == 2)
+                        {
+                            it = eventRepository.GetEnumerator();
+                        }
+                        else if (input == 3)
+                        {
+                            it = ticketRepository.GetEnumerator();
+                        }
+                        else if (input == 4)
+                        {
+                            it = userRepository.GetEnumerator();
+                        }
+                        else if (input == 5)
+                        {
+                            it = walletRepository.GetEnumerator();
+                        }
+                        
+                        while (it.MoveNext() && it.Current != null)
+                        {
+                            Console.WriteLine(it.Current);
+                        }
+                    }
+                    
+                    //Natural Sort - Нове
+                    else if (input == 14)
                     {
                         Console.Write("What to sort?" +
                                       "\n1) Checks" +
@@ -343,32 +403,64 @@ namespace Lab1.App
 
                         if (input == 1)
                         {
-                            checkRepository.Sort();
+                            checkRepository.NatSort();
                         }
                         else if (input == 2)
                         {
-                            eventRepository.Sort();
+                            eventRepository.NatSort();
                         }
                         else if (input == 3)
                         {
-                            ticketRepository.Sort();
+                            ticketRepository.NatSort();
                         }
                         else if (input == 4)
                         {
-                            userRepository.Sort();
+                            userRepository.NatSort();
                         }
                         else if (input == 5)
                         {
-                            walletRepository.Sort();
+                            walletRepository.NatSort();
                         }
                     }
-                    else if (input == 14)
+                    
+                    //Alternative Sort - Нове
+                    else if (input == 15)
                     {
+                        Console.Write("What to sort?" +
+                                      "\n1) Checks" +
+                                      "\n2) Events" +
+                                      "\n3) Tickets" +
+                                      "\n4) Users" +
+                                      "\n5) Wallet" +
+                                      "\n\n-->Enter: ");
                         
+                        input = int.Parse(Console.ReadLine());
+                        
+                        if (input == 1)
+                        {
+                            checkRepository.AltSort();
+                        }
+                        else if (input == 2)
+                        {
+                            eventRepository.AltSort();
+                        }
+                        else if (input == 3)
+                        {
+                            ticketRepository.AltSort();
+                        }
+                        else if (input == 4)
+                        {
+                            userRepository.AltSort();
+                        }
+                        else if (input == 5)
+                        {
+                            walletRepository.AltSort();
+                        }
                     }
+                    
                     else
                     {
-                        Console.WriteLine("The input must be between 0 and 12.");
+                        Console.WriteLine("The input must be between 0 and 15.");
                     }
                 }
                 else

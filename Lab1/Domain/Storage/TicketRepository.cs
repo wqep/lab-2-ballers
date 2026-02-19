@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Data;
 using Lab1.Domain.Core;
+using Lab1.Domain.Core.Comparers;
 using Lab1.Domain.Core.Enumerators;
 
 namespace Lab1.Domain.Storage;
@@ -85,8 +86,13 @@ public class TicketRepository : IEnumerable
         return new TicketEnumerator(tickets);
     }
     
-    public void Sort()
+    public void NatSort()
     {
-        Array.Sort(tickets);
+        Array.Sort(tickets, 0, _count);
+    }
+    
+    public void AltSort()
+    {
+        Array.Sort(tickets, 0, _count, new TicketComparer());
     }
 }

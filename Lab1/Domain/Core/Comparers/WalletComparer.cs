@@ -6,8 +6,8 @@ public class WalletComparer : IComparer
 {
     public int Compare(object x, object y)
     {
-        Wallet c1 = x as Wallet;
-        Wallet c2 = y as Wallet;
+        Wallet c1 = (Wallet)x;
+        Wallet c2 = (Wallet)y;
 
         return c1.Balance.CompareTo(c2.Balance);
     }
