@@ -1,8 +1,4 @@
 ﻿using Lab1.Domain.Core.Interfaces;
-<<<<<<< HEAD
-=======
-namespace Lab1.Domain.Core;
->>>>>>> d61e295 (Tests.)
 
 public class Event : IIdenifiable
 {
