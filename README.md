@@ -6,7 +6,6 @@
 ```
 ```
 Учасники 8-team:
-  1)
   1) 
   2)
 ```
@@ -49,4 +48,3 @@ Iduno
 5) Wallet - `Balance`
 
 :shipit:
-5) Wallet - `Balance`
